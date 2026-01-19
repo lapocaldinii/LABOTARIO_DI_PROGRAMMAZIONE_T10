@@ -13,18 +13,18 @@ public:
     ChatRegistry() = default;
     ~ChatRegistry() = default;
 
-    // returns existing chat between u1 and u2 or creates a new one
+    // ritorna la chat esistente se esiste oppure ne crea una nuova
     std::shared_ptr<Chat> getOrCreateChat(const std::shared_ptr<User>& u1,
                                           const std::shared_ptr<User>& u2);
 
-    // find chat if exists
+    // cerca la chat
     std::shared_ptr<Chat> findChat(const std::shared_ptr<User>& u1,
                                    const std::shared_ptr<User>& u2) const;
 
-    // list all chats (copy)
+    // lista delle chat
     std::vector<std::shared_ptr<Chat>> allChats() const;
 
-    // print all chats
+    // stampa le chat
     void printAll(std::ostream& out) const;
 
 private:

@@ -22,7 +22,7 @@ public:
     const std::string& text() const noexcept;
     TimePoint timestamp() const noexcept;
 
-    // Returns human-readable timestamp (local time)
+    // timestamp
     std::string formattedTimestamp() const;
 
 private:

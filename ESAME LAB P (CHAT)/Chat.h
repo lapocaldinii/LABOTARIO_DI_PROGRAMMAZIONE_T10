@@ -14,20 +14,20 @@ public:
     Chat(std::shared_ptr<User> a, std::shared_ptr<User> b);
     ~Chat() = default;
 
-    // Non-copyable, non-movable (to simplify ownership semantics)
+
     Chat(const Chat&) = delete;
     Chat& operator=(const Chat&) = delete;
 
     // add a message from sender to the other participant
     void sendMessage(std::shared_ptr<User> sender, const std::string& text);
 
-    // all messages (thread-safe copy)
+    // arichivio messaggi
     std::vector<Message> messages() const;
 
-    // print to ostream
+    // scrive la chat
     void print(std::ostream& out) const;
 
-    // check whether this chat involves the two users (order-free)
+    // controlla chi è coinvolto nella chat (user)
     bool involves(const std::shared_ptr<User>& u1, const std::shared_ptr<User>& u2) const noexcept;
 
     std::pair<std::shared_ptr<User>, std::shared_ptr<User>> participants() const noexcept;
@@ -38,7 +38,7 @@ private:
     mutable std::mutex m_mutex;
     std::vector<Message> m_messages;
 
-    // helper to determine other participant given sender
+    // determina un partecipante grazie al puntatore del mandante di un messaggio
     std::shared_ptr<User> otherOf(const std::shared_ptr<User>& sender) const;
 };
 

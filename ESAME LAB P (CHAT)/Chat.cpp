@@ -5,7 +5,7 @@
 Chat::Chat(std::shared_ptr<User> a, std::shared_ptr<User> b)
     : m_userA(std::move(a)), m_userB(std::move(b))
 {
-    // Ensure not same user
+
     if (m_userA->id() == m_userB->id()) {
         throw std::invalid_argument("Chat requires two distinct users");
     }

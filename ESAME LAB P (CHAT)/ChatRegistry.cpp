@@ -6,7 +6,7 @@ std::shared_ptr<Chat> ChatRegistry::getOrCreateChat(const std::shared_ptr<User>&
     if (!u1 || !u2) throw std::invalid_argument("Users must be non-null");
     if (u1->id() == u2->id()) throw std::invalid_argument("Cannot create chat with same user twice");
 
-    // repeated pattern: try to find existing chat then create
+    // controlla se la chat esiste e poi ne crea una
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         for (auto& c : m_chats) {
