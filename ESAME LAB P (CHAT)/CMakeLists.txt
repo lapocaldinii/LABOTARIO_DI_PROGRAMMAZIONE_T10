@@ -1,14 +1,18 @@
-cmake_minimum_required(VERSION 3.31)
-project(ESAME_LAB_P__CHAT_)
+# CMakeLists.txt for Google Test
 
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.10)
 
-add_executable(ESAME_LAB_P__CHAT_ main.cpp
-        User.cpp
-        User.h
-        Message.cpp
-        Message.h
-        Chat.cpp
-        Chat.h
-        ChatRegistry.cpp
-        ChatRegistry.h)
+# Set the project name
+project(ESAME_LAB_P_CHT)
+
+# Include GoogleTest as a subdirectory
+add_subdirectory(googletest)
+
+# Declare the testing executable
+add_executable(runTests test_file.cpp)
+
+# Link the Google Test libraries
+target_link_libraries(runTests gtest gtest_main)
+
+# Add a test
+add_test(NAME sample_test COMMAND runTests)
