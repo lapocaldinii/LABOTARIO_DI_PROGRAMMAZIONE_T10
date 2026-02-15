@@ -2,7 +2,6 @@
 #define USER_H
 
 #include <string>
-#include <atomic>
 
 class User {
 public:
@@ -14,12 +13,11 @@ public:
     IdType id() const noexcept;
     const std::string& username() const noexcept;
 
-    // Equality by id
     bool operator==(const User& other) const noexcept;
     bool operator!=(const User& other) const noexcept;
 
 private:
-    static std::atomic<IdType> s_nextId;
+    static IdType s_nextId;   // NON atomic
     IdType m_id;
     std::string m_username;
 };
