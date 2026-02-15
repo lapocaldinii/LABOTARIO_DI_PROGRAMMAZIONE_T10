@@ -1,18 +1,19 @@
-# CMakeLists.txt for Google Test
+# CMakeLists.txt
 
 cmake_minimum_required(VERSION 3.10)
+project(YourProjectName)
 
-# Set the project name
-project(ESAME_LAB_P_CHT)
+# Other existing configurations
 
-# Include GoogleTest as a subdirectory
-add_subdirectory(googletest)
+# Find GoogleTest
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 
-# Declare the testing executable
-add_executable(runTests test_file.cpp)
+# Add test directory
+add_executable(runTests test/test.cpp)
 
-# Link the Google Test libraries
-target_link_libraries(runTests gtest gtest_main)
+target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
 
-# Add a test
-add_test(NAME sample_test COMMAND runTests)
+# Optionally add tests
+enable_testing()
+add_test(NAME exampleTest COMMAND runTests)
