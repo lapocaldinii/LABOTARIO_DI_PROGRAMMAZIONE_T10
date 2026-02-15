@@ -1,19 +1,14 @@
-# CMakeLists.txt
+# Google Test Setup e Configurazione
 
-cmake_minimum_required(VERSION 3.10)
-project(YourProjectName)
+# Per utilizzare Google Test nel tuo progetto, assicurati di avere il pacchetto Google Test scaricato e disponibile nel tuo sistema.
 
-# Other existing configurations
+# Aggiungi il percorso di Google Test alle variabili di inclusione e di libreria. Questo permette di compilare e linkare correttamente le unità di test.
 
-# Find GoogleTest
-find_package(GTest REQUIRED)
+# Includi il modulo di Google Test nel tuo progetto.
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# Add test directory
-add_executable(runTests test/test.cpp)
+# Crea un obiettivo per eseguire i test.
+add_executable(runUnitTests ${TEST_SOURCES})
 
-target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
-
-# Optionally add tests
-enable_testing()
-add_test(NAME exampleTest COMMAND runTests)
+# Associa Google Test all'obiettivo di test creato.
+target_link_libraries(runUnitTests ${GTEST_LIBRARIES} pthread)
